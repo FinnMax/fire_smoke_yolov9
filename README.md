@@ -13,4 +13,30 @@ Dependencies: Install via `pip`:
 pip install torch torchvision tqdm ultralytics
 ```
 YOLOv9 Repository: Clone the YOLOv9 repository and place the notebooks in its root directory:
+```bash
+git clone https://github.com/WongKinYiu/yolov9
+```
+Hardware: A CUDA-enabled GPU (e.g., NVIDIA) for faster training and inference (set `--device 0` in the code).
+Dataset: Fire and smoke datasets in COCO format, with annotations (`instances_default.json`) and images split into `train` and `val` folders.
+
+### Training with train.ipynb ###
+The `train.ipynb` notebook performs the following:
+
+Converts COCO annotations to YOLO format for fire (`class 1`) and smoke (`class 0)`.
+Trains a YOLOv9 `gelan-c` model for 300 epochs with optimized hyperparameters.
+
+This trains the model and saves weights to `/yolov9/runs/train/gelan_c_300ep_smoke_opt/weights/best.pt.`
+
+### Notes ###
+Update `your_main_directory` in the notebook to your project path.
+Ensure `train.yaml` is configured with paths to `train` and `val` datasets and class names (`smoke`, `fire`).
+Training requires significant GPU memory; adjust `--batch-size` if needed.
+
+## Inference with inference.ipynb ##
+The `inference.ipynb` notebook validates the trained model and runs detection on validation images or new data.
+
+### Notes ###
+Update paths (e.g., `/train.yaml`, `/dataset_val/images/val`) to match your setup.
+Adjust `--conf` (confidence threshold) or `--iou` for stricter or looser detections.
+The `--source` can be a folder, image, or video for flexible inference.
 
