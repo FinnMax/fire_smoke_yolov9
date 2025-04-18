@@ -8,4 +8,5 @@ Requirements
 Environment: A Linux-based system (e.g., Ubuntu 20.04 or later) or Windows with GPU support recommended.
 Python: Version 3.8 or later (compatible with YOLOv9 dependencies).
 Dependencies: Install via `pip`:
-```pip install torch torchvision tqdm ultralytics```
+
+python```pip install torch torchvision tqdm ultralytics```
